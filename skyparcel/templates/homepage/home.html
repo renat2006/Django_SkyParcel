@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+  <title>Главная страница</title>
+{% endblock %}
+
+{% block content %}
+  {% for application in routes %}
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <p class="card-text">{{ application.departure_city }}</p>
+        <p class="card-text">{{ application.destination_city }}</p>
+        <p class="card-text">{{ application.departure_time }}</p>
+        <a href="{% url 'chat:chat-page-create' pk_application=application.id %}">Написать</a>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

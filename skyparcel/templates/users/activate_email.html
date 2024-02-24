@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+  <title>Регистрация</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/form_style.css' %}">
+<h3 align="center">Подтвердите электронную почту</h3><br>
+<div align="center">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.code.label }}
+        {{ form.code }}
+      </div>
+      {{ form.code.errors }}
+    </div>
+    <button type="submit">Подтвердить</button>
+  </form>
+</div>
+{% endblock %}

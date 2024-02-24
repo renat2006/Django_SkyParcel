@@ -1,0 +1,4 @@
+-r prod.txt
+black==23.11.0
+django-debug-toolbar==4.2.0
+pre-commit==3.5.0

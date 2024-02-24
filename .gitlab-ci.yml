@@ -1,0 +1,34 @@
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+before_script:
+
+  - pip install -r requirements/test.txt
+flake8:
+  stage: lint
+
+  script:
+    - flake8 --inline-quotes '"'
+
+black:
+  stage: lint
+  before_script:
+    - pip install black
+  script:
+    - black --check --verbose --line-length=79 .
+
+test:
+  stage: test
+  script:
+    - cd skyparcel
+    - python manage.py test
+
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy"
+  only:
+    - master

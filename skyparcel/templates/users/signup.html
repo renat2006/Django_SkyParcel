@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+  <title>Регистрация</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/form_style.css' %}">
+<h3 align="center">Регистрация</h3><br>
+<div align="center">
+  <form method="POST" action="{% url 'users:signup' %}">
+    {% csrf_token %}
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.username.label }}
+        {{ form.username }}
+      </div>
+      {{ form.username.errors }}
+    </div>
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+      </div>
+      {{ form.first_name.errors }}
+    </div>
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+      </div>
+      {{ form.last_name.errors }}
+    </div>
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.email.label }}
+        {{ form.email }}
+      </div>
+      {{ form.email.errors }}
+    </div>
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.password1.label }}
+        {{ form.password1 }}
+      </div>
+      {{ form.password1.errors }}
+    </div>
+    <div class="form_component">
+      <div class="form-outline mb-4">
+        {{ form.password2.label }}
+        {{ form.password2 }}
+      </div>
+      {{ form.password2.errors }}
+    </div>
+    <a href="{% url 'users:login' %}">Уже есть аккаунт?</a>
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+</div>
+{% endblock %}

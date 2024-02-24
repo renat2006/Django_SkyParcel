@@ -1,0 +1,46 @@
+{% load static %}
+
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  {% with request.resolver_match.view_name as view_name %}
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link {% if view_name == 'homepage:home' %}active{% endif %}" href="{% url 'homepage:home' %}">
+        Главная страница
+      </a>
+    </li>
+    {% with request.user.is_active as user_status %}
+      {% if user_status %}
+        <li class="nav-item">
+          <a class="nav-link {% if view_name == 'homepage:application_add' %}active{% endif %}" href="{% url 'homepage:application_add' %}">
+            Создать предложение
+          </a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link {% if view_name == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}">
+            Создать предложение
+          </a>
+        </li>
+      {% endif %}
+    {% endwith %}
+    {% with request.user.is_staff as user_status %}
+    {% if user_status %}
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/">
+          Панель администратора
+        </a>
+      </li>
+    {% endif %}
+    {% endwith %}
+    {% with request.user.is_active as user_status %}
+    {% if user_status %}
+      <li class="nav-item">
+        <a class="nav-link {% if view_name == 'users:profile' %}active{% endif %}" href="{% url 'users:profile' %}">
+          Профиль
+        </a>
+      </li>
+    {% endif %}
+    {% endwith %}
+    {% endwith %}
+  </ul>
+</header>

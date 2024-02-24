@@ -1,0 +1,6 @@
+[flake8]
+inline-quotes = double
+import-order-style = appnexus
+exclude = */migrations/
+max-complexity = 10
+application_import_names = skyparcel,homepage,applications,users

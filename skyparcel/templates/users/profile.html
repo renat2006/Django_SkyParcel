@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Профиль</title>
+{% endblock %}
+
+{% block content %}
+{{request.user}}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for form in forms %}
+      {% for field in form.visible_fields %}
+      <div class="form-outline mb-4">
+        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+          <span class="form-text">
+            {{ field.help_text|safe  }}
+          </span>
+        {% endif %}
+      {% endfor %}
+      </div>
+    {% endfor %}
+    <div class="row mt-4">
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-block mb-4">Отправить</button>
+      </div>
+    </div>
+  </form>
+  {% for application in applications %}
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <p class="card-text">{{ application.departure_city }}</p>
+      <p class="card-text">{{ application.destination_city }}</p>
+      <p class="card-text">{{ application.booking_code }}</p>
+      <p class="card-text">{{ application.departure_time }}</p>
+      <p class="card-text">{{ application.comment }}</p>
+
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}

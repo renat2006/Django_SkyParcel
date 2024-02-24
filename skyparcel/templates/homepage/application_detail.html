@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Предложение</title>
+{% endblock %}
+
+{% block content %}
+  <h3>Путешественник</h3>
+  {{ user.username }}
+  {{ user.profile.surname }}
+  <h3>Путь</h3>
+  <p>{{ application.departure_city }}</p>
+  <p>{{ application.destination_city }}</p>
+  <p>{{ application.booking_code }}</p>
+  <p>{{ application.departure_time }}</p>
+  <p>{{ application.comment }}</p>
+<a href="{% url 'chat:chat-page-create' pk_application=application.id %}">Написать</a>
+{% endblock %}

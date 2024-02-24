@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% block title %}
+  <title>Вход</title>
+{% endblock %}
+
+{% block content %}
+<h3 align="center">Авторизация</h3><br>
+<div align="center">
+<form method="POST">
+      {% csrf_token %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <div class="alert alert-danger">
+          {{ error | escape }}
+        </div>
+      {% endfor %}
+      <div style="margin-bottom: 10px;">
+        <div>
+          {{ field.label }}
+          {{ field }}
+        </div>
+      </div>
+    {% endfor %}
+  <a href="{% url 'users:change_password' %}">Забыли пароль?</a>
+  <button type="submit">Войти</button>
+</form>
+</div>
+{% endblock %}

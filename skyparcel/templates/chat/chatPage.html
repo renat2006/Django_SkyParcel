@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Чат</title>
+{% endblock %}
+
+{% block content %}
+    <center><h1>Чат</h1></center>
+    {% for message in messages %}
+      {{ message.author.username }} : {{ message.content }} <br>
+    {% endfor %}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_ul }}
+      <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

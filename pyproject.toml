@@ -1,0 +1,16 @@
+[tool.black]
+line-length = 79
+
+
+[tool.flake8]
+max-line-length = 79
+exclude = [
+  ".git",
+  "__pycache__",
+  "build",
+  "dist",
+  ".venv"
+]
+inline-quotes = '"'
+import-order-style = "appnexus"
+application-import-names = ["skyparcel", "applications", "homepage", "users"]
