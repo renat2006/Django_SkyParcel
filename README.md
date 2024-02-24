@@ -1,8 +1,8 @@
-#SkyParcel
+# SkyParcel
 
 
 
-#Технологии
+# Технологии
 
 Python 
 Django 
