@@ -10,7 +10,7 @@ services:
     name: skyparcel
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn skyparcel.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd skyparcel && python -m gunicorn skyparcel.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
