@@ -99,14 +99,21 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "skyparcel.wsgi.application"
+if not DEBUG:
+    DATABASES = {
+        'default': dj_database_url.config(
 
-DATABASES = {
-    'default': dj_database_url.config(
-
-        default='postgres://renat:V3UeTUle9VF6nzOeFw70S26l8mt5Z8wU@dpg-cno0l97sc6pc73ban2qg-a/dbskyparcel',
-        conn_max_age=600
-    )
-}
+            default='postgres://renat:V3UeTUle9VF6nzOeFw70S26l8mt5Z8wU@dpg-cno0l97sc6pc73ban2qg-a/dbskyparcel',
+            conn_max_age=600
+        )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        },
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
