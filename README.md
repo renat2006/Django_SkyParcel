@@ -38,7 +38,7 @@ Node.js
 4. Перейти в папку skyparcel
 
    ```shell
-      cd skyparsel
+      cd skyparcel
    ```
 
 5. Миграции
