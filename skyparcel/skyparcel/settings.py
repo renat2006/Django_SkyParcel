@@ -1,7 +1,7 @@
 from datetime import timedelta
 import os
 from pathlib import Path
-
+import dj_database_url
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,6 +77,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "skyparcel.urls"
@@ -100,28 +101,29 @@ TEMPLATES = [
 WSGI_APPLICATION = "skyparcel.wsgi.application"
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    },
+    'default': dj_database_url.config(
+
+        default='postgres://renat:V3UeTUle9VF6nzOeFw70S26l8mt5Z8wU@dpg-cno0l97sc6pc73ban2qg-a/dbskyparcel',
+        conn_max_age=600
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth"
-        ".password_validation.UserAttributeSimilarityValidator",
+                ".password_validation.UserAttributeSimilarityValidator",
     },
     {
         "NAME": "django.contrib.auth"
-        ".password_validation.MinimumLengthValidator",
+                ".password_validation.MinimumLengthValidator",
     },
     {
         "NAME": "django.contrib.auth"
-        ".password_validation.CommonPasswordValidator",
+                ".password_validation.CommonPasswordValidator",
     },
     {
         "NAME": "django.contrib.auth"
-        ".password_validation.NumericPasswordValidator",
+                ".password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -194,5 +196,8 @@ CHANNEL_LAYERS = {
         },
     },
 }
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
