@@ -99,21 +99,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "skyparcel.wsgi.application"
-if not DEBUG:
-    DATABASES = {
-        'default': dj_database_url.config(
-
-            default='postgres://renat:BOOyB5FjOpQgtK3NVpqBkCuh1sGmoUjD@dpg-coh919nsc6pc73ajhbdg-a/skyparceldb',
-            conn_max_age=1200
-        )
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        },
-    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -195,6 +180,22 @@ SIMPLE_JWT = {
 MEDIA_URL = "media/"
 ASGI_APPLICATION = "skyparcel.routing.application"
 MEDIA_ROOT = BASE_DIR / "media"
+if not DEBUG:
+    DATABASES = {
+        'default': dj_database_url.config(
+
+            default='postgres://skpdb_user:BHQwP5hR875JRl69leyUk1LGahdiVFyg@dpg-coh9thmv3ddc73fkrilg-a/skpdb',
+            conn_max_age=600
+        )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        },
+    }
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
