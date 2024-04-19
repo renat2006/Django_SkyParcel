@@ -7,3 +7,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+environment:
+  POSTGRES_USER: skpdb_user
+  POSTGRES_PASSWORD: BHQwP5hR875JRl69leyUk1LGahdiVFyg
