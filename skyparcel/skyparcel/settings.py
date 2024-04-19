@@ -104,7 +104,7 @@ if not DEBUG:
         'default': dj_database_url.config(
 
             default='postgres://renat:BOOyB5FjOpQgtK3NVpqBkCuh1sGmoUjD@dpg-coh919nsc6pc73ajhbdg-a/skyparceldb',
-            conn_max_age=600
+            conn_max_age=1200
         )
     }
 else:
