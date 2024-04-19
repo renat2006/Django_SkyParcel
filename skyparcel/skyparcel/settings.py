@@ -103,7 +103,7 @@ if not DEBUG:
     DATABASES = {
         'default': dj_database_url.config(
 
-            default='postgres://renat:V3UeTUle9VF6nzOeFw70S26l8mt5Z8wU@dpg-cno0l97sc6pc73ban2qg-a/dbskyparcel',
+            default='postgres://renat:BOOyB5FjOpQgtK3NVpqBkCuh1sGmoUjD@dpg-coh919nsc6pc73ajhbdg-a/skyparceldb',
             conn_max_age=600
         )
     }
