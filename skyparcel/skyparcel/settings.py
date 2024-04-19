@@ -184,7 +184,7 @@ if not DEBUG:
     DATABASES = {
         'default': dj_database_url.config(
 
-            default='postgres://skpdb_user:BHQwP5hR875JRl69leyUk1LGahdiVFyg@dpg-coh9thmv3ddc73fkrilg-a/skpdb',
+            default='postgres://skpdb_user:BHQwP5hR875JRl69leyUk1LGahdiVFyg@dpg-coh9thmv3ddc73fkrilg-a.oregon-postgres.render.com/skpdb',
             conn_max_age=600
         )
     }
